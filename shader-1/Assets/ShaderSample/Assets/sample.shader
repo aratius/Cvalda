@@ -12,12 +12,13 @@
     //シェーダの設定項目
     SubShader
     {
+        // *** Queue: 描画の優先度
         Tags { "Queue"="Transparent" }
         LOD 200
 
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf Standard alpha:fade
+        #pragma surface surf Standard alpha:fade  // *** alpha: fade　追加
         
         // Use shader model 3.0 target, to get nicer looking lighting
         #pragma target 3.0
@@ -54,7 +55,7 @@
             // Metallic and smoothness come from slider variables
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
-            o.Alpha = 0.4;
+            o.Alpha = 0.4;  // *** SurfaceOutputStandardにAlphaを設定
         }
         ENDCG
     }
