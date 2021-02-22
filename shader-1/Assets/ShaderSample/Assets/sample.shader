@@ -12,12 +12,12 @@
     //シェーダの設定項目
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "Queue"="Transparent" }
         LOD 200
 
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf Standard fullforwardshadows
+        #pragma surface surf Standard alpha:fade
         
         // Use shader model 3.0 target, to get nicer looking lighting
         #pragma target 3.0
@@ -50,11 +50,11 @@
         {
             // Albedo comes from a texture tinted by color
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
-            o.Albedo = _BaseColor.rgb;  //マテリアルの基本色を設定（黒っぽく）
+            o.Albedo = fixed4(0.6f, 0.7f, 0.4f, 1);  //マテリアルの基本色を設定（黒っぽく）
             // Metallic and smoothness come from slider variables
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
-            o.Alpha = c.a;
+            o.Alpha = 0.4;
         }
         ENDCG
     }
