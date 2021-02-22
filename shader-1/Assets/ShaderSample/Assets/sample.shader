@@ -13,12 +13,12 @@
     SubShader
     {
         // *** Queue: 描画の優先度
-        Tags { "Queue"="Transparent" }
+        Tags { "RenderType"="Opaque" }
         LOD 200
 
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf Standard alpha:fade  // *** alpha: fade　追加
+        #pragma surface surf Standard
         
         // Use shader model 3.0 target, to get nicer looking lighting
         #pragma target 3.0
@@ -31,8 +31,9 @@
         //Vertexシェーダから出力された値の入力地点（Input構造体）
         struct Input
         {
-            float3 worldNormal;  // *** 法線ベクトル
-            float3 viewDir;  //視線ベクトル
+            float2 uv_MainTex;
+            float3 worldNormal;
+            float3 viewDir;
         };
 
         half _Glossiness;
@@ -50,9 +51,12 @@
         //o = output構造体
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
-            o.Albedo = fixed4(1, 1, 1, 1);
-            float alpha = 1 - (abs(dot(IN.viewDir, IN.worldNormal)));  //二つのベクトルの内積を計算し、1から引くことによって輪郭部分の透明度を1、中央部分を0にしている
-            o.Alpha = alpha * 1.5f;
+            fixed4 baseColor = fixed4(0.05, 0.1, 0, 1);
+            fixed4 rimColor = fixed4(1, 0.2, 0.2, 1);  // *** 回り込み後光の色
+
+            o.Albedo = baseColor;
+            float rim = 1 - saturate(dot(IN.viewDir, o.Normal));  // *** オブジェクト輪郭付近のEmissionを強くするための内積を取る
+            o.Emission = rimColor * pow(rim, 2.5);
         }
         ENDCG
     }
