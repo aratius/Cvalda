@@ -31,7 +31,8 @@
         //Vertexシェーダから出力された値の入力地点（Input構造体）
         struct Input
         {
-            float2 uv_MainTex;
+            float3 worldNormal;  // *** 法線ベクトル
+            float3 viewDir;  //視線ベクトル
         };
 
         half _Glossiness;
@@ -49,13 +50,9 @@
         //o = output構造体
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
-            // Albedo comes from a texture tinted by color
-            fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
-            o.Albedo = fixed4(0.6f, 0.7f, 0.4f, 1);  //マテリアルの基本色を設定（黒っぽく）
-            // Metallic and smoothness come from slider variables
-            o.Metallic = _Metallic;
-            o.Smoothness = _Glossiness;
-            o.Alpha = 0.4;  // *** SurfaceOutputStandardにAlphaを設定
+            o.Albedo = fixed4(1, 1, 1, 1);
+            float alpha = 1 - (abs(dot(IN.viewDir, IN.worldNormal)));  //二つのベクトルの内積を計算し、1から引くことによって輪郭部分の透明度を1、中央部分を0にしている
+            o.Alpha = alpha * 1.5f;
         }
         ENDCG
     }
