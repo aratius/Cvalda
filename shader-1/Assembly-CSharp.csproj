@@ -37,7 +37,8 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\ShaderSample\Assets\sample.cs" />
-     <None Include="Assets\ShaderSample\Assets\ShaderSet\box\box.shader" />
+     <None Include="Assets\ShaderSample\Assets\ShaderSet\Box\box.shader" />
+     <None Include="Assets\ShaderSample\Assets\ShaderSet\StendGrass\grass.shader" />
      <None Include="Assets\ShaderSample\ProjectSettings\ProjectVersion.txt" />
      <None Include="Assets\ShaderSample\Assets\ShaderSet\Dragon\dragon.shader" />
     <Reference Include="UnityEngine">

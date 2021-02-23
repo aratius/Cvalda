@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: sample
+  m_Name: dragon
   m_Shader: {fileID: 4800000, guid: 69040c331173243748d9c438007b437f, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
