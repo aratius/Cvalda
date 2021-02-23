@@ -1,21 +1,2 @@
 Base path: '/Applications/Unity/Hub/Editor/2019.4.17f1/Unity.app/Contents', plugins path '/Applications/Unity/Hub/Editor/2019.4.17f1/PlaybackEngines'
 Cmd: initializeCompiler
-Cmd: preprocess
-  insize=2212 outsize=1309 ok=1
-Cmd: preprocess
-  insize=2329 outsize=1350 ok=1
-Cmd: preprocess
-  insize=2057 outsize=1350 ok=1
-Cmd: preprocess
-  insize=2248 outsize=1350 ok=1
-Cmd: preprocess
-  error: 2 plat 4 at (58): undeclared identifier 'sturate'
-  insize=2201 outsize=2935 ok=0
-Cmd: preprocess
-  insize=2202 outsize=1351 ok=1
-Cmd: preprocess
-  insize=2191 outsize=1434 ok=1
-Cmd: preprocess
-  insize=2244 outsize=1435 ok=1
-Cmd: preprocess
-  insize=2244 outsize=1435 ok=1
